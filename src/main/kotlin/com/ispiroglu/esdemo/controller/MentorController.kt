@@ -1,5 +1,6 @@
 package com.ispiroglu.esdemo.controller
 
+import com.ispiroglu.esdemo.dto.CustomScoreProfessionRequest
 import com.ispiroglu.esdemo.dto.ProfessionRequest
 import com.ispiroglu.esdemo.entity.Mentor
 import com.ispiroglu.esdemo.service.MentorService
@@ -14,18 +15,13 @@ import org.springframework.web.bind.annotation.RestController
 class MentorController(
     private val mentorService: MentorService
 ) {
-
-    @GetMapping("/query/{query}")
-    fun getByCustomQuery(@PathVariable query: String): MutableIterable<Mentor> =
-        mentorService.getMentorByQuery(query)
-
     @GetMapping("/profession")
     fun getByProfession(@RequestBody profession: ProfessionRequest) =
         mentorService.getMentorsByProfessionWithScore(profession.professions.joinToString(" "))
 
     @GetMapping("/profession/factor")
-    fun getByProfessionByFactor(@RequestBody factor: HashMap<String, Float>) =
-        mentorService.getMentorsByProfessionWithScoreByFieldFactor(factor)
+    fun getByProfessionByFactor(@RequestBody request: CustomScoreProfessionRequest) =
+        mentorService.getMentorsByProfessionWithScoreByFieldFactor(request.factors)
 
     @GetMapping()
     fun getAll(): MutableIterable<Mentor> = mentorService.getAll()

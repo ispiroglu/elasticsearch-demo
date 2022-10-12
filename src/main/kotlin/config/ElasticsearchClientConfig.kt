@@ -18,7 +18,6 @@ class ElasticsearchClientConfig {
     // INFO: Working With 7.17.6
     @Bean
     fun elasticSearchClient(): co.elastic.clients.elasticsearch.ElasticsearchClient {
-        println("----------------------------------------------------- I AM CREATING ELASTICSEARCH CLIENT")
         val httpClient = RestClient.builder(
             HttpHost("localhost", 9200)
         ).build()
@@ -26,7 +25,6 @@ class ElasticsearchClientConfig {
             httpClient,
             JacksonJsonpMapper()
         )
-
         return ElasticsearchClient(transport)
     }
 }

@@ -16,6 +16,8 @@ data class Mentor(
     val experience: Int,
     @Field(name = "professions", type = FieldType.Text) // Auto kurtarır mı bizi ?
     val professions: String
+    // .net go java micros
+
 //    @Field("mentees", type = FieldType.Nested)
 //    val mentees: List<Mentee>
 )
