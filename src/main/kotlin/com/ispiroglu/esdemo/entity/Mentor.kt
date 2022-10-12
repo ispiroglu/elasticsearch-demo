@@ -16,4 +16,6 @@ data class Mentor(
     val experience: Int,
     @Field(name = "professions", type = FieldType.Text) // Auto kurtarır mı bizi ?
     val professions: String
+//    @Field("mentees", type = FieldType.Nested)
+//    val mentees: List<Mentee>
 )

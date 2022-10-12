@@ -23,6 +23,10 @@ class MentorController(
     fun getByProfession(@RequestBody profession: ProfessionRequest) =
         mentorService.getMentorsByProfessionWithScore(profession.professions.joinToString(" "))
 
+    @GetMapping("/profession/factor")
+    fun getByProfessionByFactor(@RequestBody factor: HashMap<String, Float>) =
+        mentorService.getMentorsByProfessionWithScoreByFieldFactor(factor)
+
     @GetMapping()
     fun getAll(): MutableIterable<Mentor> = mentorService.getAll()
 
